@@ -28,3 +28,8 @@ This is my progress record where i'll be storing and recording my progress. It'l
     - Changed the style of index page to cards format.
     - Changed the style of the New page and added more input criterion.
     - Changed the style of the Show page and added more display criterion.
+
+## 22/12/2022
+- ### Error handling and Data validation
+    - Added basic client side form validation in the new and edit forms
+    
