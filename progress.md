@@ -31,5 +31,7 @@ This is my progress record where i'll be storing and recording my progress. It'l
 
 ## 22/12/2022
 - ### Error handling and Data validation
-    - Added basic client side form validation in the new and edit forms
+    - Added basic client side form validation in the new and edit forms.
+    - Added async and express custom error handlers.
+    - Added server side validation in adding new campground with JOI schema validation.
     
