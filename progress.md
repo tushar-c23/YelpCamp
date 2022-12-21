@@ -18,3 +18,13 @@ This is my progress record where i'll be storing and recording my progress. It'l
     - Created a "Delete" model. With this basic CRUD is done.
 
 ## 16/12/2022
+- ### Basic Styling
+    - Added bootstrap
+    - Created navbar and footer partials in the ejs views.
+    - Added images
+
+## 21/12/2022
+- ### Basic Styling
+    - Changed the style of index page to cards format.
+    - Changed the style of the New page and added more input criterion.
+    - Changed the style of the Show page and added more display criterion.
