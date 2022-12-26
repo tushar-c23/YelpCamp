@@ -35,3 +35,11 @@ This is my progress record where i'll be storing and recording my progress. It'l
     - Added async and express custom error handlers.
     - Added server side validation in adding new campground with JOI schema validation.
     
+## 23/12/2022
+- Added a new review model.
+
+## 25/12/2022
+- Added server side and client side validations on the add review form.
+- Added Reviews to the show page of a campgroud and added some basic layout styling.
+- Added a "Delete Review" option.
+- Added a delete middleware to delete all reviews of a campground when it is deleted from the database.
