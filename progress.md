@@ -43,3 +43,9 @@ This is my progress record where i'll be storing and recording my progress. It'l
 - Added Reviews to the show page of a campgroud and added some basic layout styling.
 - Added a "Delete Review" option.
 - Added a delete middleware to delete all reviews of a campground when it is deleted from the database.
+
+## 27/12/2022
+- Made seperate routers for campgrounds and reviews.
+- Made a public served directory.
+- Added session config to the app.
+- Added flash messages.
