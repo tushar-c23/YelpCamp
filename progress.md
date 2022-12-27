@@ -49,3 +49,7 @@ This is my progress record where i'll be storing and recording my progress. It'l
 - Made a public served directory.
 - Added session config to the app.
 - Added flash messages.
+
+## 28/12/2022
+- Created a new user registration form with backend validation and passport.
+- Created a new Login form with backend validation.
