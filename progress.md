@@ -30,7 +30,7 @@ This is my progress record where i'll be storing and recording my progress. It'l
     - Changed the style of the Show page and added more display criterion.
 
 ## 22/12/2022
-- ### Error handling and Data validation
+- /### Error handling and Data validation
     - Added basic client side form validation in the new and edit forms.
     - Added async and express custom error handlers.
     - Added server side validation in adding new campground with JOI schema validation.
@@ -53,3 +53,20 @@ This is my progress record where i'll be storing and recording my progress. It'l
 ## 28/12/2022
 - Created a new user registration form with backend validation and passport.
 - Created a new Login form with backend validation.
+- Added author record with campgrounds.
+- Added client side authorisation for deleting and editing a campground as author user.
+- Added server side authorisation to the editing permission for a campground.
+- Added authorisation in reviews. Set review deleting perms for authors.
+- Refactored routes to their respective controllers to clean the routes code.
+- Added starability for using stars to rate campgrounds.
+
+## 29/12/2022
+- Added images upload funactionality.
+- Added delete images functionality in campground edit form.
+- Added Maps in show page.
+    - Issue
+        - JSON.stringify() returns a string in JSON format not a JS object. Used this to get campground object from the ejs file to the js script to be used in it.
+    - Solution
+        - Used JSON.parse in the js file to parse the string into a JS object.
+    - Issue
+        - Line breaks in description break the JSON parse and hence the map display.

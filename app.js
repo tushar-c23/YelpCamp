@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -14,18 +18,27 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+// const helmet = require('helmet');
+
+const mongoSanitize = require('express-mongo-sanitize');
 
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
+const dbUrl = process.env.DB_URL;
+
+const MongoDBStore = require("connect-mongo");
 
 main().catch(err => {
     console.log("Database not connected");
     console.log(err);
 });
 
+// mongodb://localhost:27017/yelp-camp
+
 async function main() {
     mongoose.set('strictQuery', true);
+    // await mongoose.connect(dbUrl);
     await mongoose.connect('mongodb://localhost:27017/yelp-camp');
     console.log("Database connected")
     // use `await mongoose.connect('mongodb://user:password@localhost:27017/test');` if your database has auth enabled
@@ -40,20 +53,40 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(mongoSanitize());
+
+const store = MongoDBStore.create({
+    mongoUrl: 'mongodb://localhost:27017/yelp-camp',
+    crypto: {
+      secret: 'squirrel'
+    },
+    touchAfter: 24*60*60
+  })
+
+store.on("error", function (e) {
+    console.log("SESSION STORE ERROR", e);
+})
 
 const sessionConfig = {
+    store,
+    name: 'session',
     secret: 'thisshouldbeabettersecret!',
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        // secure: true,
         expires: Date.now() + 1000 * 7 * 24 * 60 * 60,
         maxAge: 1000 * 7 * 24 * 60 * 60
     }
 }
 app.use(session(sessionConfig))
 app.use(flash());
-
+// app.use(
+//     helmet({
+//       contentSecurityPolicy: false,
+//     })
+//   );
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
